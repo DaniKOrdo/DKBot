@@ -9,6 +9,8 @@ module.exports = {
         // if(args[0].length > 5) return message.reply(`❌ El prefijo no puede tener más de 5 caracteres.`);
         if(args[0] === prefix) return message.reply(`❌ El prefijo ya es este.`);
 
-        await schema
+        await schema.findOneAndUpdate({guildID: message.guild.id}, {prefix: args[0]});
+
+        message.reply(`✅ El prefijo ha sido cambiado de \`${prefix}\` a \`${args[0]}\`.`);
     }
 }

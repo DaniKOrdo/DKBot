@@ -3,7 +3,7 @@ const config = require('../../config/config.json');
 
 module.exports = (client) => {
     try {
-        mongoose.set('strictQuery', false);
+        // mongoose.set('strictQuery', false);
         mongoose.connect(config.mongoDB, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
