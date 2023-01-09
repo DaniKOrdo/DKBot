@@ -1,27 +1,21 @@
 const Discord = require('discord.js');
-const config = require('');
+const config = require('./config/config.json');
 require('colors');
 
-const client = new Discord.Client({
-    intents: [
-        Discord.Intents.FLAGS.GUILDS,
-        Discord.Intents.FLAGS.GUILDS_MEMBERS,
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
-    ],
-});
+const client = new Discord.Client({ intents: 32767 });
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
-function requireHandler() {
-    ['command', 'events'].forEach(handler => {
+function requireHandlers() {
+    ['commands', 'events'].forEach(handler => {
         try {
             require(`./handlers/${handler}`)(client, Discord);
         } catch (e) {
-            console.log(e);
+            console.log(`requireHandlers: ${e}`.red.brightCyan);
         }
     });
 }
-requireHandler();
+requireHandlers();
 
 client.login(config.token);
