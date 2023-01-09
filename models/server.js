@@ -1,8 +1,10 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
-const serverSchema = new mongose.Schema({
+const serverSchema = new mongoose.Schema({
     guildID: String,
     prefix: String,
 });
 
-module.exports = mongose.model('Server', serverSchema);
+const model = mongoose.model('ConfigServer', serverSchema);
+
+module.exports = model;

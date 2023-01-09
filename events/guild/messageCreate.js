@@ -4,6 +4,7 @@ const { secure } = require(`${process.cwd()}/handlers/functions.js`);
 
 module.exports = async (client, message) => {
     if(!message.guild || !message.channel || message.author.bot) return;
+
     let data = await secure(serverSchema, "guildID", message.guild.id, {
         guildID: message.guild.id,
         prefix: config.prefix

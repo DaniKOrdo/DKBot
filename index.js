@@ -1,8 +1,16 @@
+const { Client, GatewayIntentBits } = require('discord.js');
 const Discord = require('discord.js');
 const config = require('./config/config.json');
 require('colors');
 
-const client = new Discord.Client({ intents: 32767 });
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
+	],
+});
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
