@@ -9,6 +9,7 @@ const client = new Client({
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildVoiceStates,
 	],
 });
 
@@ -16,7 +17,7 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
 function requireHandlers() {
-    ['commands', 'events'].forEach(handler => {
+    ['commands', 'events', "distube"].forEach(handler => {
         try {
             require(`./handlers/${handler}`)(client, Discord);
         } catch (e) {
