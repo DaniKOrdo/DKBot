@@ -11,6 +11,7 @@ module.exports = {
             textChannel: message.channel,
             message
         });
+
         message.reply(`🎵 Reproduciendo \`${args.join(' ')}\`.`);
     }
 };
