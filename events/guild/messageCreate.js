@@ -1,6 +1,6 @@
 const config = require(`${process.cwd()}/config/config.json`);
 const serverSchema = require(`${process.cwd()}/models/server.js`);
-const { secure } = require(`${process.cwd()}/handlers/functions.js`);
+const { secure } = require(`${process.cwd()}/utils/functions.js`);
 
 module.exports = async (client, message) => {
     if(!message.guild || !message.channel || message.author.bot) return;

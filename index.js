@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require('./config/config.json');
+const fs = require('fs');
 require('colors');
 
 const client = new Discord.Client({
@@ -20,15 +21,13 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.color = config.color;
 
-function requireHandlers() {
-    ['commands', 'events', "distube"].forEach(handler => {
-        try {
-            require(`./handlers/${handler}`)(client, Discord);
-        } catch (e) {
-            console.log(`requireHandlers: ${e}`.red.brightCyan);
-        }
-    });
-}
-requireHandlers();
+fs.readdirSync('./handlers').forEach(handler => {
+    try {
+        require(`./handlers/${handler}`)(client, Discord);
+    } catch (e) {
+        console.log(`ERROR ON HANDLER: ${handler}`.red)
+        console.log(e)
+    }
+});
 
 client.login(config.token);
