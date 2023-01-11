@@ -1,3 +1,5 @@
+const { goodbyePhrases } = require(`${process.cwd()}/utils/goodbyePhrases.js`);
+
 module.exports = {
     name: "stop",
     aliases: ["desconectar", "leavevc", "leave", "disconnect"],
@@ -9,6 +11,6 @@ module.exports = {
         if(!message.member.voice?.channel) return message.reply(`❌ **Tienes que estar en un canal de voz para ejecutar este comando!**`);
         if(message.guild.members.me.voice?.channel && message.member.voice?.channel.id != message.guild.members.me.voice?.channel.id) return message.reply(`❌ **Tienes que estar en el mismo canal de voz __QUE YO__ para ejecutar este comando!**`);
         client.distube.stop(message);
-        message.reply(`🏃‍♂️ **Me las fui.**`)
+        message.reply(goodbyePhrases())
     }
 }
