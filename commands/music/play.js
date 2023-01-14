@@ -11,7 +11,7 @@ module.exports = {
             textChannel: message.channel,
             message
         });
-
+        console.log(`${message.member} played ${args.join(' ')}`)
         message.reply(`🎵 Reproduciendo \`${args.join(' ')}\`.`);
     }
 };
